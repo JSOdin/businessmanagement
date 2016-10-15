@@ -1,0 +1,129 @@
+<div class="row profile-tab">
+    <div class="col-md-24 well">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Card Type</label>
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="TBCtrl.currentCard.cardType" ng-options="type as type.display for type in options.cardTypes track by type.value">
+
+                    </select>
+                </div>
+                <label class="col-sm-2 control-label">Designation</label>
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="TBCtrl.currentCard.designation" ng-options="designation as designation.display for designation in options.designations track by designation.value">
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-14">
+                   <input type="text" class="form-control" ng-model="TBCtrl.currentCard.name"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Card ID</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentCard.cardID"/>
+                </div>
+                <label class="col-sm-2 control-label">Currency</label>
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="TBCtrl.currentCard.currency" ng-options="currency as currency.value for currency in options.currencies track by currency.value">
+
+                    </select>
+                </div>
+             </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <tabgroup select-location>
+                    <tab title="Address 1:Bill to"></tab>
+                    <tab title="Address 2:Ship to"></tab>
+                    <tab title="Address 3"></tab>
+                    <tab title="Address 4"></tab>
+                    <tab title="Address 5"></tab>
+                </tabgroup>
+
+             <!--   <div class="col-sm-6">
+                    <select class="form-control"  ng-model="TBCtrl.currentCard.location" ng-options="location as location.label for location in TBCtrl.currentCard.locations track by location.label">
+
+                    </select>
+                </div>-->
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" ng-model="TBCtrl.currentLocation.address"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">City</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.city"/>
+                </div>
+                <label class="col-sm-2 col-sm-offset-6 control-label">Phone #1</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.phone1"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Province</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.province"/>
+                </div>
+                <label class="col-sm-2 control-label" style="margin-left: -7px;">Postal Code</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.postalCode"/>
+                </div>
+                <label class="col-sm-2 col-sm-offset-6 control-label">Phone #2</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.phone2"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Country</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.country"/>
+                </div>
+                <label class="col-sm-2 col-sm-offset-6 control-label ">Phone #3</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.phone3"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-14 offset-right-margin"></div>
+                <label class="col-sm-2  control-label">Fax</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.fax"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-14 offset-right-margin"></div>
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.email"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-14 offset-right-margin"></div>
+                <label class="col-sm-2 control-label">Website</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.website"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-14 offset-right-margin"></div>
+                <label class="col-sm-2 control-label right-field-margin">Salutation</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.salutation"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-14 offset-right-margin"></div>
+                <label class="col-sm-2 control-label">Contact</label>
+                <div class="col-sm-6 right-field-margin">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentLocation.contact"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

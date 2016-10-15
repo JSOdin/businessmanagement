@@ -1,0 +1,37 @@
+<div class="row profile-tab">
+    <div class="col-md-24 well">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Sale Layout</label>
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="TBCtrl.currentCard.saleLayout" ng-options="layout as layout.display for layout in options.saleLayouts"></select>
+                </div>
+                <label class="col-sm-4 control-label">Team Affiliation</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentCard.teamAffiliation"/>  <!-- TODO -->
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Source</label>
+                <div class="col-sm-6">
+                    <sources selected-source="TBCtrl.currentCard.source"></sources>
+                </div>
+                <label class="col-sm-4 control-label">Event Organizer</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentCard.eventOrganizer"/>  <!-- TODO -->
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Custom List</label>
+                <div class="col-sm-6">
+                    <custom-list selected-custom-list="TBCtrl.currentCard.customList"></custom-list>
+                </div>
+                <label class="col-sm-4 control-label">Custom Field #3</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="TBCtrl.currentCard.customField"/>  <!-- TODO -->
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h3 class="modal-title">Regions</h3>
+</div>
+<div class="modal-body">
+    <div class="row look-for-input">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="exampleInputName2">Look for</label>
+                <input type="text" class="form-control" ng-model="RMICtrl.searchTerm" ng-change="RMICtrl.highlightMatch(RMICtrl,RMICtrl.searchTerm,'regions')">
+            </div>
+        </form>
+    </div>
+    <table class="table table-bordered table-striped">
+        <tr ng-repeat="region in RMICtrl.regions|orderBy:'value'">
+            <td ng-class="{'highlight-match':RMICtrl.match[region.value]}" ng-click="RMICtrl.highlightMatch(RMICtrl,region.value,'regions')">{{region.display}}</td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="RMICtrl.quickAdd(RMICtrl,'regions',RMICtrl.searchTerm)">Quick Add</button>
+    <button class="btn btn-primary" type="button" ng-click="RMICtrl.pickRegion()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="RMICtrl.dismissModal()">Cancel</button>
+</div>

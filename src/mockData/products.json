@@ -1,0 +1,12 @@
+[
+  {"itemnumber":"FD413","name":"Drip Drop Kettle", "price":75.00,"quantityOnHand":16},
+  {"itemnumber":"FD513","name":"Kettle Drop Parts","price":25.00,"quantityOnHand":11},
+  {"itemnumber":"FD111","name":"Drop Dip","price":35.00,"quantityOnHand":10},
+  {"itemnumber":"FE115","name":"Fish Cakes","price":45.00,"quantityOnHand":16},
+  {"itemnumber":"FE106","name":"Tip Top Suits","price":15.00,"quantityOnHand":10},
+  {"itemnumber":"FE150","name":"Nike Jordans","price":25.00,"quantityOnHand":7},
+  {"itemnumber":"FE500","name":"Toby Mcguire","price":85.00,"quantityOnHand":2},
+  {"itemnumber":"FF900","name":"Megablocks","price":105.00,"quantityOnHand":7},
+  {"itemnumber":"FG300","name":"Vietnam Noodles","price":15.00,"quantityOnHand":16},
+  {"itemnumber":"FG500","name":"Darjeeling Tea","price":23.00,"quantityOnHand":7}
+]

@@ -1,0 +1,64 @@
+<div class="row profile-tab">
+    <div class="col-md-24 well">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Company Images/Logos</label>
+                <div class="col-sm-5">
+                <input upload-image type="file" class="form-control" multiple/>
+            </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-5 company-pic-img-wrapper" ng-class="{'col-sm-offset-4':$index %3 == 0}" ng-repeat="file in files" >
+                    <img class="img-responsive" ng-src="{{files[imgSrc+$index]}}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Notes</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" ng-model="CDCtrl.currentCard.notes"></textarea>      <!-- TODO -->
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Identifiers</label>
+                <div class="col-sm-6">
+                    <identifier identifiers="CDCtrl.identifiers" identifiers-abbv="CDCtrl.currentCard.identifiers"></identifier>
+                </div>
+                <label class="col-sm-4 control-label">Department</label>
+                <div class="col-sm-6">
+                    <department options="CDCtrl.options" selected-department="CDCtrl.currentCard.department"></department>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Region</label>
+                <div class="col-sm-6">
+                    <region options="CDCtrl.options" selected-region="CDCtrl.currentCard.region" ></region>
+                </div>
+                <label class="col-sm-4 control-label">Team Affiliation</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="CDCtrl.currentCard.teamAffiliation"/>  <!-- TODO -->
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Source</label>
+                <div class="col-sm-6">
+                    <sources options="CDCtrl.options" selected-source="CDCtrl.currentCard.source"></sources>
+                </div>
+                <label class="col-sm-4 control-label">Event Organizer</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="CDCtrl.currentCard.eventOrganizer"/>  <!-- TODO -->
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Custom List</label>
+                <div class="col-sm-6">
+                    <custom-list options="CDCtrl.options" selected-custom-list="CDCtrl.currentCard.customList"></custom-list>
+                </div>
+                <label class="col-sm-4 control-label">Custom Field #3</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="CDCtrl.currentCard.customField"/>  <!-- TODO -->
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h3 class="modal-title">I'm a modal!</h3>
+</div>
+<div class="modal-body">
+    <ul style="list-style:none;">
+
+            <div class="row">
+                <div class="col-sm-10 identifier-each-wrapper" ng-repeat="(key,value) in IMICtrl.items"  >
+                    <div class="col-sm-2 identifier-key">{{key}}</div>
+                    <div class="col-sm-offset-1 col-sm-19" style="height:55px;">
+                        <div class="input-group" >
+                             <span class="input-group-addon">
+                                  <input type="checkbox" ng-model="IMICtrl.checkboxmodels[key]" ng-change="IMICtrl.updateAbbvs(IMICtrl.checkboxmodels,key)">      <!-- TODO -->
+                              </span>
+                             <span edit-in-place ctrl="IMICtrl" show-editor="{{'identifiers'}}" prop="{{key}}">
+                                  <p ng-show="IMICtrl.paperFields.identifiers[key]" class="form-control"> {{value}}</p>
+                                  <input ng-hide="IMICtrl.paperFields.identifiers[key]" class="form-control" type="text" ng-model="IMICtrl.items[key]" />
+                             </span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="IMICtrl.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="IMICtrl.cancel()">Cancel</button>
+</div>

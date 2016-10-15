@@ -1,0 +1,231 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-20 col-md-offset-2">
+            <div class="row input-row">
+                <div class="col-md-6">
+                    <select class="form-control" ng-model="SICtrl.selectedFormType" ng-options="type as type for type in SICtrl.formTypes">
+                    </select>
+                </div>
+            </div>
+            <div class="row input-row">
+                <div class="col-md-1">
+                    <button class="btn btn-default btn-block"><span class="glyphicon glyphicon-edit"></span></button>
+                </div>
+                <div class="col-md-6 customer-title">
+                    <select class="form-control" ng-model="SICtrl.selectedContact" ng-options="contact as contact.name for contact in SICtrl.contacts track by contact.cardID">  <!-- track by some criteria allows non-reference binding thanks to track by.. -->
+                    <!--    <option ng-repeat="contact in SICtrl.contacts" value="{{contact}}">{{contact.name}}</option>-->
+                    </select>
+                </div>
+
+                <div class="col-md-offset-10 col-md-3 tax-inclusive-cbox">
+                    <div class="checkbox pull-right">
+                        <label>
+                            <input type="checkbox">
+                            <p>Tax-inclusive</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" ng-model="SICtrl.selectedTerm" ng-options="term as term for term in SICtrl.terms">
+                    </select>
+                </div>
+            </div>
+            <div class="row document-sheet well">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>Ship to</label>
+                            <textarea class="form-control" rows="5" ng-model="SICtrl.selectedContact.locations[1].address"></textarea>  <!-- we want the SHIP TO address-->
+                        </div>
+                    </div>
+                    <div class="col-md-offset-10 col-md-7">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-7 control-label">Invoice #</label>
+                                <div class="col-md-16 col-md-offset-1">
+                                    <input type="text" class="form-control" ng-model="SICtrl.invoiceNum"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-7 control-label">Date</label>
+                                <div class="col-md-16 col-md-offset-1">
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" is-open="SICtrl.calendarIsOpen" ng-model="SICtrl.issueDate"/>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="SICtrl.openCalendar()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-7 control-label">Customer PO #</label>
+                                <div class="col-md-16 col-md-offset-1">
+                                    <input type="text" class="form-control" ng-model="SICtrl.customerPONum"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-md-8 col-md-offset-16">
+                                    <button class="btn btn-default form-control" ng-click="SICtrl.addRow()">Add Entry</button>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered sales-form-sheet">
+                        <tr class="info">
+                            <th class="col-md-1">
+                                Quantity
+                            </th>
+                            <th class="col-md-2">
+                                Item Number
+                            </th>
+                            <th class="col-md-4">
+                                Description
+                            </th>
+                            <th class="col-md-2">
+                                Account #
+                            </th>
+                            <th class="col-md-2">
+                                Price
+                            </th>
+                            <th class="col-md-1">
+                                Discount %
+                            </th>
+                            <th class="col-md-2">
+                                Total
+                            </th>
+                            <th  class="col-md-2">
+                                Tax
+                            </th>
+                            <th  class="col-md-2">
+                                Dept
+                            </th>
+                            <th class="col-md-2">
+                                Job
+                            </th>
+                            <th class="col-md-2">
+
+                            </th>
+                        </tr>
+                        <tr ng-repeat="item in SICtrl.items track by $index" >
+                            <td edit-in-place ctrl="SICtrl" show-editor="{{$index}}" prop="quantity" ><p  ng-show="SICtrl.paperFields[$index].quantity">{{item.quantity}}</p><input ng-hide="SICtrl.paperFields[$index].quantity" class="form-control" type="text" ng-model="item.quantity"/></td>
+                            <td>
+                                <select class="form-control" ng-model="item.product" ng-options="product as product.itemnumber for product in SICtrl.products track by product.itemnumber" >
+                                    <!--    <option ng-repeat="contact in SICtrl.contacts" value="{{contact}}">{{contact.name}}</option>-->
+                                </select>
+                            </td>
+                            <td edit-in-place ctrl="SICtrl" show-editor="{{$index}}" prop="name" ><p  ng-show="SICtrl.paperFields[$index].name">{{item.product.name}}</p><input ng-hide="SICtrl.paperFields[$index].name" class="form-control" type="text" ng-model="item.product.name"/></td>
+                            <td>
+                                <select class="form-control" ng-model="item.account" ng-options="account as account.id for account in SICtrl.accounts track by account.id" >
+                                <!--    <option ng-repeat="contact in SICtrl.contacts" value="{{contact}}">{{contact.name}}</option>-->
+                                </select>
+                            </td>
+                            <td edit-in-place ctrl="SICtrl" show-editor="{{$index}}" prop="price"><p  ng-show="SICtrl.paperFields[$index].price">$ {{item.product.price | getDecimal}}</p><input numbers-only='{{item.product.price}}' ng-hide="SICtrl.paperFields[$index].price" class="form-control" type="text" ng-model="item.product.price"/></td>
+                            <td edit-in-place ctrl="SICtrl" show-editor="{{$index}}" prop="discount"><p  ng-show="SICtrl.paperFields[$index].discount">{{item.discount | getDecimal:true}}</p><input  ng-hide="SICtrl.paperFields[$index].discount" class="form-control" type="text" ng-model="item.discount"/></td>
+                            <td><p >$ {{SICtrl.getItemTotal(item)| getDecimal}}</p></td>
+                            <td>
+                                <select class="form-control" ng-model="item.tax" ng-options="tax as tax.abbv for tax in SICtrl.taxes track by tax.abbv">
+
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" ng-model="item.dept" ng-options="department as department.abbv for department in SICtrl.departments track by department.abbv">
+
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" ng-model="item.job" ng-options="job as job.id for job in SICtrl.jobs track by job.id">
+
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-default form-control" ng-click="SICtrl.deleteRow($index)">Delete</button>
+                            </td>
+                        </tr>
+                        <tr class="success summary">
+                            <td colspan="5"></td>
+                            <th class="col-md-2">
+                                <p>Subtotal</p>
+                            </th>
+                            <td class="col-md-2">
+                                <p>$ {{SICtrl.getSubTotal(SICtrl.items) | getDecimal}}</p>
+                            </td>
+                            <th class="col-md-2">
+                                <p>Tax Total</p>
+                            </th>
+                            <td class="col-md-2">
+                                <p>$ {{SICtrl.getTaxTotal(SICtrl.items) | getDecimal}}</p> <!-- assign to SICtrl.tax every digest -->
+                            </td>
+                            <th class="col-md-2">
+                                <p>Total</p>
+                            </th>
+                            <td class="col-md-2">
+                                <p>$ {{SICtrl.getTotal() | getDecimal}}</p>
+                            </td>
+                        </tr>
+                        <tr class="success summary">
+                            <td colspan="5"></td>
+                            <th class="col-md-2">
+                                <p>Freight</p>
+                            </th>
+
+                            <td edit-in-place ctrl="SICtrl" show-editor="{{'summary'}}" prop="freight"><p  ng-show="SICtrl.paperFields.summary.freight">$ {{SICtrl.freight | getDecimal}}</p><input numbers-only='{{SICtrl.freight}}' ng-hide="SICtrl.paperFields.summary.freight" class="form-control" type="text" ng-model="SICtrl.freight"/></td>
+                            <th class="col-md-2">
+                                <p>Paid Today</p>
+                            </th>
+                            <td edit-in-place ctrl="SICtrl" show-editor="{{'summary'}}" prop="paidToday"><p  ng-show="SICtrl.paperFields.summary.paidToday">$ {{SICtrl.paidToday | getDecimal}}</p><input numbers-only='{{SICtrl.paidToday}}' ng-hide="SICtrl.paperFields.summary.paidToday" class="form-control" type="text" ng-model="SICtrl.paidToday"/></td>
+                            <th class="col-md-2">
+                                <p>Balance Due</p>
+                            </th>
+                            <td class="col-md-2">
+                                <p>$ {{SICtrl.getBalanceDue() | getDecimal}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="panel panel-primary shipping-panel">
+                        <div class=panel-heading>
+                            <h3 class="panel-title">Sales and Shipping Information</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label>Ship Via</label>
+                                    <select ng-model='SICtrl.shipping' class="form-control" ng-options="shipping for shipping in SICtrl.shippings">
+                                    </select>
+                                </div>
+                             </form>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label>Promise By</label>
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" is-open="SICtrl.calendarTwoIsOpen" ng-model="SICtrl.promiseDate"/>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="SICtrl.openCalendar(true)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                        </p>
+                                </div>
+                            </form>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label>Notes</label>
+                                    <textarea ng-model="SICtrl.notes" class="form-control" style="width:300px;"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-22 col-md-2">
+                        <button class="btn btn-default form-control" ng-click="SICtrl.submit()">Record</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

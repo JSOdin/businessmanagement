@@ -1,0 +1,10 @@
+[
+  {"abbv":"GPT","name":"GST and PST","type":"Consolidated","percent":"13%"},
+  {"abbv":"GQT","name":"GST and QST","type":"Consolidated","percent":"14.975%"},
+  {"abbv":"GST","name":"GST","type":"GST","percent":"5%"},
+  {"abbv":"HST","name":"Harmonized Sales Tax","type":"GST","percent":"13%"},
+  {"abbv":"IMP","name":"Import Duty","type":"Import Duty","percent":"0%"},
+  {"abbv":"PST","name":"Provincial Sales Tax","type":"PST","percent":"8%"},
+  {"abbv":"QST","name":"Quebec Sales Tax","type":"QST","percent":"9.975%"},
+  {"abbv":"Z1","name":"Zero Rated","type":"GST","percent":"0%"}
+]

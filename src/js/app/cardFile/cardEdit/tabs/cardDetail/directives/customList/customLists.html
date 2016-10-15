@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h3 class="modal-title">Custom List</h3>
+</div>
+<div class="modal-body">
+    <div class="row look-for-input">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="exampleInputName2">Look for</label>
+                <input type="text" class="form-control" ng-model="CMICtrl.searchTerm" ng-change="CMICtrl.highlightMatch(CMICtrl,CMICtrl.searchTerm,'customLists')">
+            </div>
+        </form>
+    </div>
+    <table class="table table-bordered table-striped">
+        <tr ng-repeat="customList in CMICtrl.customLists|orderBy:'value'">
+            <td ng-class="{'highlight-match':CMICtrl.match[customList.value]}" ng-click="CMICtrl.highlightMatch(CMICtrl,customList.value,'customLists')">{{customList.display}}</td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="CMICtrl.quickAdd(CMICtrl,'customLists',CMICtrl.searchTerm)">Quick Add</button>
+    <button class="btn btn-primary" type="button" ng-click="CMICtrl.pickCustomList()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="CMICtrl.dismissModal()">Cancel</button>
+</div>

@@ -1,0 +1,37 @@
+
+<cardswrapper>
+    <div class="container-fluid cards-wrapper">
+        <div class="row">
+            <div class="col-md-20 col-md-offset-2 well">
+                <div class="row search-form-row">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label>Search By</label>
+                            <select ng-model="cardsCtrl.filterProp" class="form-control" ng-options="filter as filter.display for filter in cardsCtrl.filters"></select>
+                            <select ng-model="cardsCtrl.filterRegex" class="form-control" ng-options="filter as filter for filter in cardsCtrl.regexFilters"></select>
+                            <input ng-model="cardsCtrl.filterText" class="form-control" type="text"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered sales-form-sheet">
+                        <tr class="info">
+                            <th>Name</th>
+                            <th>Card ID</th>
+                            <th>Phone Number</th>
+                            <th>Type</th>
+                        </tr>
+                        <tr ng-repeat="contact in cardsCtrl.contacts | filterByProperty:cardsCtrl.filterProp:cardsCtrl.filterText:cardsCtrl.filterRegex | filterByCardType:cardsCtrl.currentType">
+                            <td><button class="btn btn-default" ng-click="cardsCtrl.edit(contact)"><span class="glyphicon glyphicon-edit"></span></button> {{contact.name || contact.lastname+', '+contact.firstname}}</td>
+                            <td>{{contact.cardID}}</td>
+                            <td>{{contact.locations[0].phone1}}</td>
+                            <td>{{contact.cardType.display}}</td>
+                        </tr>
+                     </table>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <button ng-click="cardsCtrl.printContacts()">Print me!</button>
+</cardswrapper>

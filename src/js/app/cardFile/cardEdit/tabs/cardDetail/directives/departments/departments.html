@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h3 class="modal-title">departments</h3>
+</div>
+<div class="modal-body">
+    <div class="row look-for-input">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="exampleInputName2">Look for</label>
+                <input type="text" class="form-control" ng-model="DMICtrl.searchTerm" ng-change="DMICtrl.highlightMatch(DMICtrl,DMICtrl.searchTerm,'departments')">
+            </div>
+        </form>
+    </div>
+    <table class="table table-bordered table-striped">
+        <tr ng-repeat="department in DMICtrl.departments|orderBy:'value'">
+            <td ng-class="{'highlight-match':DMICtrl.match[department.value]}" ng-click="DMICtrl.highlightMatch(DMICtrl,department.value,'departments')">{{department.display}}</td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="DMICtrl.quickAdd(DMICtrl,'departments',DMICtrl.searchTerm)">Quick Add</button>
+    <button class="btn btn-primary" type="button" ng-click="DMICtrl.pickDepartment()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="DMICtrl.dismissModal()">Cancel</button>
+</div>

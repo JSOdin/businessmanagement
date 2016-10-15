@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h3 class="modal-title">Sources</h3>
+</div>
+<div class="modal-body">
+    <div class="row look-for-input">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="exampleInputName2">Look for</label>
+                <input type="text" class="form-control" ng-model="SMICtrl.searchTerm" ng-change="SMICtrl.highlightMatch(SMICtrl,SMICtrl.searchTerm,'sources')">
+            </div>
+        </form>
+    </div>
+    <table class="table table-bordered table-striped">
+        <tr ng-repeat="source in SMICtrl.sources|orderBy:'value'">
+            <td ng-class="{'highlight-match':SMICtrl.match[source.value]}" ng-click="SMICtrl.highlightMatch(SMICtrl,source.value,'sources')">{{source.display}}</td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="SMICtrl.quickAdd(SMICtrl,'sources',SMICtrl.searchTerm)">Quick Add</button>
+    <button class="btn btn-primary" type="button" ng-click="SMICtrl.pickRegion()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="SMICtrl.dismissModal()">Cancel</button>
+</div>

@@ -1,0 +1,9 @@
+[
+  {"id":"4-1200","name":"Tea","type":"Income"},
+  {"id":"4-1300","name":"Gift Baskets and Misc Sales","type":"Income"},
+  {"id":"4-2100","name":"Coffee Maker Sales","type":"Income"},
+  {"id":"4-2200","name":"Classroom Training Income","type":"Income"},
+  {"id":"4-2300","name":"Tea Brewers","type":"Income"},
+  {"id":"4-2400","name":"Freight Collected","type":"Income"},
+  {"id":"4-2500","name":"Travel Income","type":"Income"}
+]

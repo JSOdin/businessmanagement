@@ -1,0 +1,4 @@
+<div class="row">
+    <div class="col-md-20 col-md-offset-2"><div ng-repeat="type in cardsCtrl.cardTypes" class="btn btn-default" ng-click="cardsCtrl.selectType(type)" ng-class="{active:((type == 'All Cards' && !cardsCtrl.currentType) || cardsCtrl.currentType == cardsCtrl.firstLetterUpperCase(type) )}">{{type}}</div></div>
+</div>
+<div ng-transclude></div>
